@@ -1,43 +1,53 @@
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #330744;
+    font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
+    color: #ffffff;
 }
 
 .container {
+    width: 80%;
     max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
     text-align: center;
+    padding: 20px;
+    background-color: #47166b;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
 .personagens {
     display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .personagem {
-    flex: 1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    background-color: #5f2684;
+    border: 2px solid #8f42ae;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
 }
 
-h2 {
-    font-size: 24px;
+.personagem h2 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.personagem div {
+    color: #ffffff;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-#heroiVida,
-#vilaoVida {
-    font-size: 18px;
-}

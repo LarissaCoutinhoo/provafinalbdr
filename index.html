@@ -10,7 +10,7 @@
     <div id="app">
         <div class="personagem">
             <div class="barra-vida" :style="{width: heroiVida + '%'}">{{ heroiVida }}%</div>
-            <div class="sprite"><img src="" alt=""></div>
+            <div class="sprite"><img src="IMG/LUNA.jpeg" alt=""></div>
             <h1>Herói</h1>
             <div class="acoes">
                 <button @click="atacar(true)">Atacar</button>
@@ -22,7 +22,7 @@
 
         <div class="personagem">
             <div class="barra-vida" :style="{width: vilaoVida + '%'}">{{ vilaoVida }}%</div>
-            <div class="sprite">Figura do personagem</div>
+            <div class="sprite"><img src="IMG/SOLAR.jpeg" alt=""></div>
             <h1>Vilão</h1>
             <button onclick="window.open('dashboard.html','_blank')">Dashboard</button>
         </div>        
