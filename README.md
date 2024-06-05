@@ -1,42 +1,44 @@
-# Jogo Herói e Vilão - LUNA VS SOLAR
+Jogo Herói e Vilão - LUNA VS SOLAR
+Descrição
+Este é um jogo onde você pode controlar uma heroína e uma vilã, cada uma com suas próprias ações. Você pode fazer um cadastro e posteriormente logar na aplicação. O jogo também possui um dashboard que exibe as vidas atuais dos personagens juntamente com as suas últimas ações. Todos os dados da aplicação ficam salvos em um banco de dados Azure.
 
-## Descrição
+Acesso Online
+Acesse a aplicação online
 
-Este é um jogo onde você pode controlar uma heroína e uma vilã, cada uma com suas próprias ações. Você pode fazer um cadastro e posteriormente logar na aplicação, o jogo também possui um dashboard que exibe as vidas atuais dos personagens juntamente com as suas últimas ações. Todos os dados da aplicação ficam salvos em um banco de dados Azure.
-
-## Acesso Online
-
-[Link para acessar a aplicação online](https://seu-site.com)
-
-## Tecnologias Utilizadas
-
-- HTML
-- CSS
-- JavaScript (Vue.js)
-- Node.js (Express, mssql, bcrypt, jsonwebtoken)
-
-## Instalação
-
+Tecnologias Utilizadas
+HTML
+CSS
+JavaScript (Vue.js)
+Node.js (Express, mssql, bcrypt, jsonwebtoken)
+Instalação
 Para executar este projeto localmente, siga as instruções abaixo:
 
-1. **Clone o repositório**
+Clone o repositório:
 
-2. **Instale as dependências:**
+bash
+Copiar código
+git clone https://github.com/seu-usuario/seu-repositorio.git
+Instale as dependências:
+
 Certifique-se de ter o Node.js instalado. Em seguida, instale as dependências do projeto:
-'npm install'
 
-3. **Configuração do Banco de Dados:**
+bash
+Copiar código
+npm install
+Configuração do Banco de Dados:
 
 Certifique-se de ter configurado o banco de dados SQL Server. Você pode usar o Azure SQL ou qualquer outro SQL Server.
+
 Crie um banco de dados chamado fatec.
 Certifique-se de que as tabelas Personagens e Usuarios já foram criadas.
 Configure as credenciais do banco de dados no arquivo server.js.
-Inicie o servidor Node.js.
-
+Inicie o servidor Node.js:
+bash
+Copiar código
+npm start
 O projeto estará disponível em http://localhost:3000.
 
-
-## Utilização
+Utilização
 Para acessar o jogo, abra o arquivo index.html no seu navegador.
 Para acessar o dashboard, abra o arquivo dashboard.html no seu navegador.
 Para acessar a página de login, abra o arquivo login.html no seu navegador.
@@ -52,24 +54,20 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const PORT = 3000;
 
-
-// Configuração do banco de dados
 const config = {
     user: 'larissa',
     password: '654Azurel',
     server: 'fatecserver.database.windows.net',
     database: 'fatec',
     options: {
-        encrypt: true // Dependendo da configuração do seu servidor SQL Server
+        encrypt: true
     }
 };
 
 app.use(express.json());
 
-// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname)));
 
-// Rota para atualizar a vida do herói e do vilão
 app.post('/atualizarVida', async (req, res) => {
     const { vidaHeroi, vidaVilao } = req.body;
 
@@ -92,20 +90,14 @@ app.post('/atualizarVida', async (req, res) => {
     }
 });
 
-// Rota para fornecer os dados do herói e do vilão
 app.get('/characters', async (req, res) => {
     try {
         await sql.connect(config);
         const request = new sql.Request();
-
-        // Consulta para obter os dados do herói
         const heroResult = await request.query("SELECT * FROM Personagens WHERE Nome = 'heroi'");
         const heroi = heroResult.recordset[0];
-
-        // Consulta para obter os dados do vilão
         const villainResult = await request.query("SELECT * FROM Personagens WHERE Nome = 'vilao'");
         const vilao = villainResult.recordset[0];
-
         res.json({ heroi, vilao });
     } catch (error) {
         console.error('Erro ao buscar dados do herói e do vilão:', error);
@@ -113,29 +105,21 @@ app.get('/characters', async (req, res) => {
     }
 });
 
-// Rota para registro de usuário
 app.post('/register', async (req, res) => {
     const { nome, email, senha } = req.body;
 
     try {
         await sql.connect(config);
         const request = new sql.Request();
-
-        // Verificar se o usuário já existe
         const checkUser = await request.query(`SELECT * FROM Usuarios WHERE Email = '${email}'`);
         if (checkUser.recordset.length > 0) {
             return res.status(400).send('Usuário já cadastrado.');
         }
-
-        // Hash da senha
         const hashedSenha = await bcrypt.hash(senha, 10);
-
-        // Inserir usuário no banco de dados
         await request.query(`
             INSERT INTO Usuarios (Nome, Email, Senha)
             VALUES ('${nome}', '${email}', '${hashedSenha}')
         `);
-
         res.status(201).send('Usuário cadastrado com sucesso.');
     } catch (err) {
         console.error(err);
@@ -143,37 +127,26 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Chave secreta para assinatura do JWT
 const secret = 'bb233ad0b2b004a8066b563f6a537622c39d8d13f4d90a185f2ac2bbf4060b40';
 
-// Rota para login de usuário
 app.post('/login', async (req, res) => {
     const { email, senha } = req.body;
 
     try {
         await sql.connect(config);
         const request = new sql.Request();
-
-        // Obter usuário do banco de dados
         const result = await request.query(`
             SELECT * FROM Usuarios WHERE Email = '${email}'
         `);
-
         if (result.recordset.length === 0) {
             return res.status(400).send('Usuário não encontrado.');
         }
-
         const user = result.recordset[0];
-
-        // Verificar a senha
         const isMatch = await bcrypt.compare(senha, user.Senha);
         if (!isMatch) {
             return res.status(400).send('Senha incorreta.');
         }
-
-        // Gerar token JWT
         const token = jwt.sign({ id: user.Id }, secret, { expiresIn: '1h' });
-
         res.json({ token });
     } catch (err) {
         console.error(err);
@@ -181,22 +154,18 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Rota para servir o arquivo de login
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
 
-// Rota para servir o arquivo de dashboard
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// Rota para servir o arquivo HTML principal
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Iniciar o servidor
 app.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
 });
