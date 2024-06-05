@@ -4,7 +4,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e1ecf1;
+    background-color:#330744;
 }
 
 #app {
@@ -15,7 +15,7 @@ body, html {
 
 .personagem {
     background-color: white;
-    border: 2px solid #1d509f;
+    border: 2px solid #8f42ae;
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
@@ -32,14 +32,14 @@ button {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #1d509f;
-    color: whitesmoke;
+    background-color: #c16be3;
+    color: black;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #1a355e;
+    background-color:#8f42ae;
 }
 
 button:active {
@@ -48,8 +48,8 @@ button:active {
 
 .barra-vida {
     height: 30px;
-    background-color: #4CAF50;
-    color: whitesmoke;
+    background-color: #b3fbb5;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;

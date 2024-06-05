@@ -47,7 +47,6 @@ app.post('/atualizarVida', async (req, res) => {
     }
 });
 
-
 // Rota para fornecer os dados do herói e do vilão
 app.get('/characters', async (req, res) => {
     try {

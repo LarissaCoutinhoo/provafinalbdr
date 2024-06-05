@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Prova - Jogo Herói e Vilão</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3"></script>
 </head>
-
 <body>
     <div id="app">
         <div class="personagem">
-            <div class="barra-vida" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}%</div>
-            <div class="sprite">Figura do personagem</div>
+            <div class="barra-vida" :style="{width: heroiVida + '%'}">{{ heroiVida }}%</div>
+            <div class="sprite"><img src="" alt=""></div>
             <h1>Herói</h1>
             <div class="acoes">
                 <button @click="atacar(true)">Atacar</button>
@@ -23,7 +21,7 @@
         </div>
 
         <div class="personagem">
-            <div class="barra-vida" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}%</div>
+            <div class="barra-vida" :style="{width: vilaoVida + '%'}">{{ vilaoVida }}%</div>
             <div class="sprite">Figura do personagem</div>
             <h1>Vilão</h1>
             <button onclick="window.open('dashboard.html','_blank')">Dashboard</button>
@@ -32,5 +30,5 @@
 
     <script type="module" src="index.js"></script>
 </body>
-
 </html>
+

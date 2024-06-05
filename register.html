@@ -42,11 +42,11 @@
                             body: JSON.stringify({ nome: this.nome, email: this.email, senha: this.senha })
                         });
 
-                        const data = await response.text(); // Obter o texto da resposta
+                        const data = await response.text(); 
 
                         if (response.status === 201) {
                             alert('Cadastro realizado com sucesso!');
-                            window.location.href = 'login.html'; // Redirecionar para a página de login
+                            window.location.href = 'login.html'; 
                         } else if (response.status === 400) {
                             throw new Error(data || 'Email já cadastrado. Tente outro.');
                         } else {

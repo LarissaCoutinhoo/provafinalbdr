@@ -4,19 +4,19 @@ const API_URL = 'http://localhost:3000';
 createApp({
     data() {
         return {
-            heroi: { vida: 100 },
-            vilao: { vida: 100 }            
+            heroiVida: 100,
+            vilaoVida: 100            
         };        
     },
     methods: {
-        atacar(isHeroi) {
+        async atacar(isHeroi) {
             if (isHeroi) {
-                this.vilao.vida -= 10;
-                this.atualizarVidaNoBancoDeDados(this.heroi.vida, this.vilao.vida);
+                this.vilaoVida -= 10;
+                this.atualizarVidaNoBancoDeDados(this.heroiVida, this.vilaoVida);
                 this.acaoVilao();
             } else {
-                this.heroi.vida -= 20;
-                this.atualizarVidaNoBancoDeDados(this.vilao.vida, this.heroi.vida);
+                this.heroiVida -= 20;
+                this.atualizarVidaNoBancoDeDados(this.vilaoVida, this.heroiVida);
             }
         },
         async atualizarVidaNoBancoDeDados(vidaHeroi, vidaVilao) {
@@ -36,28 +36,27 @@ createApp({
                 console.error('Erro ao atualizar a vida no banco de dados:', error);
             }
         },
-        defender(isHeroi) {
-            this.acaoVilao();
-        },
-        usarPocao(isHeroi) {
-            if (isHeroi) {
-                this.vilao.vida += 10;
-                this.atualizarVidaNoBancoDeDados(this.heroi.vida, this.vilao.vida);
-                this.acaoVilao();
-            } else {
-                this.heroi.vida += 10;
-                this.atualizarVidaNoBancoDeDados(this.vilao.vida, this.heroi.vida);
-            }
-            this.acaoVilao();
-        },
-        correr(isHeroi) {
-            this.acaoVilao();
-        },
         acaoVilao() {
             const acoes = ['atacar', 'defender', 'usarPocao', 'correr'];
             const acaoAleatoria = acoes[Math.floor(Math.random() * acoes.length)];
             this[acaoAleatoria](false);
-            console.log('O vilão usou: ' + acaoAleatoria)
+            console.log('O vilão usou: ' + acaoAleatoria);
+        },
+        async defender(isHeroi) {
+            this.acaoVilao();
+        },
+        async usarPocao(isHeroi) {
+            if (isHeroi) {
+                this.vilaoVida += 10;
+                this.atualizarVidaNoBancoDeDados(this.heroiVida, this.vilaoVida);
+                this.acaoVilao();
+            } else {
+                this.heroiVida += 10;
+                this.atualizarVidaNoBancoDeDados(this.vilaoVida, this.heroiVida);
+            }
+        },
+        async correr(isHeroi) {
+            this.acaoVilao();
         }
     }
 }).mount("#app");

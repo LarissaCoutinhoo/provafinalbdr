@@ -34,13 +34,13 @@
             methods: {
                 async fetchCharacterData() {
                     try {
-                        const response = await fetch('http://localhost:3000/characters'); // Substitua pela sua rota da API
+                        const response = await fetch('http://localhost:3000/characters');
                         if (!response.ok) {
                             throw new Error('Erro ao buscar dados dos personagens');
                         }
                         const data = await response.json();
-                        this.heroiVida = data.heroi.vida;
-                        this.vilaoVida = data.vilao.vida;
+                        this.heroiVida = data.heroi.Vida;
+                        this.vilaoVida = data.vilao.Vida;
                     } catch (error) {
                         console.error('Erro ao buscar dados dos personagens:', error.message);
                     }
