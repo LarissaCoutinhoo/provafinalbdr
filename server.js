@@ -99,6 +99,9 @@ app.post('/register', async (req, res) => {
     }
 });
 
+// Chave secreta para assinatura do JWT
+const secret = 'bb233ad0b2b004a8066b563f6a537622c39d8d13f4d90a185f2ac2bbf4060b40';
+
 // Rota para login de usuário
 app.post('/login', async (req, res) => {
     const { email, senha } = req.body;
