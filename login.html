@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Jogo Herói e Vilão</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Login</h1>
+        <form @submit.prevent="login">
+            <label>Email:</label>
+            <input type="email" v-model="email" required>
+            <label>Senha:</label>
+            <input type="password" v-model="senha" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    email: '',
+                    senha: ''
+                };
+            },
+            methods: {
+                async login() {
+                    try {
+                        const response = await fetch('http://localhost:3000/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ email: this.email, senha: this.senha })
+                        });
+                        if (!response.ok) {
+                            throw new Error('Erro ao realizar login.');
+                        }
+                        const data = await response.json();
+                        localStorage.setItem('token', data.token);
+                        alert('Login realizado com sucesso!');
+                        window.location.href = 'index.html'; // Redirecionar para o jogo
+                    } catch (error) {
+                        console.error('Erro ao realizar login:', error);
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

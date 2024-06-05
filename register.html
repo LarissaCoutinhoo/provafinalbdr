@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - Jogo Herói e Vilão</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Cadastro</h1>
+        <form @submit.prevent="register">
+            <label>Nome:</label>
+            <input type="text" v-model="nome" required>
+            <label>Email:</label>
+            <input type="email" v-model="email" required>
+            <label>Senha:</label>
+            <input type="password" v-model="senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    nome: '',
+                    email: '',
+                    senha: ''
+                };
+            },
+            methods: {
+                async register() {
+                    try {
+                        const response = await fetch('http://localhost:3000/register', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ nome: this.nome, email: this.email, senha: this.senha })
+                        });
+                        if (!response.ok) {
+                            throw new Error('Erro ao realizar cadastro.');
+                        }
+                        alert('Cadastro realizado com sucesso!');
+                        window.location.href = 'login.html'; // Redirecionar para a página de login
+                    } catch (error) {
+                        console.error('Erro ao realizar cadastro:', error);
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
