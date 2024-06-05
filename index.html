@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Prova - Jogo Herói e Vilão</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
             <div class="acoes">
                 <button @click="atacar(true)">Atacar</button>
                 <button @click="defender(true)">Defender</button>
-                <button @click="pocao(true)">Usar Poção</button>
+                <button @click="usarPocao(true)">Usar Poção</button>
                 <button @click="correr(true)">Correr</button>
             </div>
         </div>
@@ -29,7 +29,8 @@
             <button onclick="window.open('dashboard.html','_blank')">Dashboard</button>
         </div>        
     </div>
+
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>
-<script type="module" src="index.js"></script>

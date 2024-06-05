@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
         new Vue({
@@ -34,11 +35,14 @@
                 async fetchCharacterData() {
                     try {
                         const response = await fetch('http://localhost:3000/characters'); // Substitua pela sua rota da API
+                        if (!response.ok) {
+                            throw new Error('Erro ao buscar dados dos personagens');
+                        }
                         const data = await response.json();
-                        this.heroiVida = data.heroi.Vida;
-                        this.vilaoVida = data.vilao.Vida;
+                        this.heroiVida = data.heroi.vida;
+                        this.vilaoVida = data.vilao.vida;
                     } catch (error) {
-                        console.error('Erro ao buscar dados dos personagens:', error);
+                        console.error('Erro ao buscar dados dos personagens:', error.message);
                     }
                 }
             }
@@ -46,3 +50,4 @@
     </script>
 </body>
 </html>
+

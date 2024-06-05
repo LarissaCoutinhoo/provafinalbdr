@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
 const sql = require('mssql');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = 3000;
+
 
 // Configuração do banco de dados
 const config = {
@@ -18,7 +21,7 @@ const config = {
 
 app.use(express.json());
 
-// Servir arquivos estáticos (como index.html)
+// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname)));
 
 // Rota para atualizar a vida do herói e do vilão
@@ -44,6 +47,7 @@ app.post('/atualizarVida', async (req, res) => {
     }
 });
 
+
 // Rota para fornecer os dados do herói e do vilão
 app.get('/characters', async (req, res) => {
     try {
@@ -65,24 +69,6 @@ app.get('/characters', async (req, res) => {
     }
 });
 
-// Rota para servir o arquivo HTML principal
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard.html'));
-});
-
-// Iniciar o servidor
-app.listen(PORT, () => {
-    console.log(`Servidor Express rodando na porta ${PORT}`);
-});
-
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const secret = 'seu_segredo_para_token'; // Mude isso para um segredo forte
-
 // Rota para registro de usuário
 app.post('/register', async (req, res) => {
     const { nome, email, senha } = req.body;
@@ -90,6 +76,12 @@ app.post('/register', async (req, res) => {
     try {
         await sql.connect(config);
         const request = new sql.Request();
+
+        // Verificar se o usuário já existe
+        const checkUser = await request.query(`SELECT * FROM Usuarios WHERE Email = '${email}'`);
+        if (checkUser.recordset.length > 0) {
+            return res.status(400).send('Usuário já cadastrado.');
+        }
 
         // Hash da senha
         const hashedSenha = await bcrypt.hash(senha, 10);
@@ -142,14 +134,19 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Rota para servir o arquivo HTML principal
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 // Rota para servir o arquivo de login
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+// Rota para servir o arquivo de dashboard
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dashboard.html'));
+});
+
+// Rota para servir o arquivo HTML principal
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Iniciar o servidor

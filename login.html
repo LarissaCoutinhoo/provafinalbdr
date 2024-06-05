@@ -15,6 +15,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
     <script src="https://unpkg.com/vue@3"></script>
     <script>
         const { createApp } = Vue;
@@ -35,15 +36,18 @@
                             },
                             body: JSON.stringify({ email: this.email, senha: this.senha })
                         });
-                        if (!response.ok) {
-                            throw new Error('Erro ao realizar login.');
-                        }
                         const data = await response.json();
+
+                        if (!response.ok) {
+                            throw new Error(data.message || 'Erro ao realizar login.');
+                        }
+
                         localStorage.setItem('token', data.token);
                         alert('Login realizado com sucesso!');
                         window.location.href = 'index.html'; // Redirecionar para o jogo
                     } catch (error) {
-                        console.error('Erro ao realizar login:', error);
+                        console.error('Erro ao realizar login:', error.message);
+                        alert('Erro ao realizar login. Verifique seus dados e tente novamente.');
                     }
                 }
             }

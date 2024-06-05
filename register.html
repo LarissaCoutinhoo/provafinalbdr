@@ -17,6 +17,7 @@
             <button type="submit">Cadastrar</button>
         </form>
     </div>
+
     <script src="https://unpkg.com/vue@3"></script>
     <script>
         const { createApp } = Vue;
@@ -38,13 +39,17 @@
                             },
                             body: JSON.stringify({ nome: this.nome, email: this.email, senha: this.senha })
                         });
+                        const data = await response.json();
+
                         if (!response.ok) {
-                            throw new Error('Erro ao realizar cadastro.');
+                            throw new Error(data.message || 'Erro ao realizar cadastro.');
                         }
+
                         alert('Cadastro realizado com sucesso!');
                         window.location.href = 'login.html'; // Redirecionar para a página de login
                     } catch (error) {
-                        console.error('Erro ao realizar cadastro:', error);
+                        console.error('Erro ao realizar cadastro:', error.message);
+                        alert('Erro ao realizar cadastro. Verifique seus dados e tente novamente.');
                     }
                 }
             }
@@ -52,3 +57,4 @@
     </script>
 </body>
 </html>
+
