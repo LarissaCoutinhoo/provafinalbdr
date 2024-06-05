@@ -44,15 +44,17 @@
 
                         const data = await response.text(); // Obter o texto da resposta
 
-                        if (response.ok) {
+                        if (response.status === 201) {
                             alert('Cadastro realizado com sucesso!');
                             window.location.href = 'login.html'; // Redirecionar para a página de login
+                        } else if (response.status === 400) {
+                            throw new Error(data || 'Email já cadastrado. Tente outro.');
                         } else {
-                            throw new Error(data || 'Erro ao realizar cadastro.'); // Usar o texto da resposta como mensagem de erro
+                            throw new Error(data || 'Erro ao realizar cadastro.');
                         }
                     } catch (error) {
                         console.error('Erro ao realizar cadastro:', error.message);
-                        alert('Erro ao realizar cadastro. Verifique seus dados e tente novamente.');
+                        alert(error.message);
                     }
                 }
             }
