@@ -1,23 +1,23 @@
 {
-  "name": "web-banco",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js --host localhost",
-    "build": "npm run copy-assets",
-    "copy-assets": "npm run copy-html && npm run copy-css",
-    "copy-html": "copy index.html public/index.html && copy dashboard.html public/dashboard.html && copy login.html public/login.html && copy register.html public/register.html",
-    "copy-css": "copy style.css public/style.css && copy dashboard-style.css public/dashboard-style.css && copy login.css public/login.css"
+  "development": {
+    "username": "larissa",
+    "password": "654Azurel",
+    "database": "fatec",
+    "host": "fatecserver.database.windows.net",
+    "dialect": "mssql",
+    "options": {
+      "encrypt": true
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "express": "^4.19.2",
-    "mssql": "^10.0.2",
-    "vue": "^3.4.21"
+  "production": {
+    "username": "larissa",
+    "password": "654Azurel",
+    "database": "fatec",
+    "host": "fatecserver.database.windows.net",
+    "dialect": "mssql",
+    "options": {
+      "encrypt": true
+    }
   }
 }
 
