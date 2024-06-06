@@ -196,10 +196,10 @@ Tela de login efetuado com sucesso.
 
 ### Tela Principal
 Tela principal da aplicação.
-![Tela principal]([screenshots/tela_principal.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/jogo.png)
+![Tela principal](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/jogo.png)
 
 ### Dashboard
 Tela do dashboard.
-![Dashboard]([screenshots/dashboard.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/dashboard.png)
+![Dashboard](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/dashboard.png)
 
 ### Obrigada por visitar este projeto.
