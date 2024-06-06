@@ -59,4 +59,4 @@ createApp({
             this.acaoVilao();
         }
     }
-}).mount("#app");
+}).mount("#app"); 
