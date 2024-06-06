@@ -29,13 +29,15 @@ body, html {
 }
 
 button {
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     background-color: #c16be3;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    align-items: center;
 }
 
 button:hover {
