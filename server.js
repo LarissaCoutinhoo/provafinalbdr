@@ -1,4 +1,4 @@
-require('dotenv').config();  // Adicione esta linha no início do arquivo
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
@@ -21,8 +21,6 @@ const config = {
 };
 
 app.use(express.json());
-
-// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname)));
 
 // Rota para atualizar a vida do herói e do vilão
@@ -156,4 +154,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
 });
-
