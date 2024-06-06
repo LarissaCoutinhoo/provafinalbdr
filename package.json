@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js --host localhost",
-    "build": "mkdir -p public && cp index.html dashboard.html login.html register.html style.css dashboard-style.css login.css index.js"
+    "build": "cp index.html dashboard.html login.html register.html style.css dashboard-style.css login.css index.js"
   },
   "keywords": [],
   "author": "",
