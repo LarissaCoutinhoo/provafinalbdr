@@ -26,11 +26,11 @@ Certifique-se de ter o Node.js instalado. Em seguida, instale as dependências d
 'npm install'
 
 3. **Configuração do Banco de Dados:**
-1. Certifique-se de ter configurado o banco de dados SQL Server. Você pode usar o Azure SQL ou qualquer outro SQL Server.
-2. Crie um banco de dados chamado `fatec`.
-3. Certifique-se de que as tabelas `Personagens` e `Usuarios` já foram criadas.
-4. Configure as credenciais do banco de dados no arquivo `server.js`.
-5. Inicie o servidor Node.js.
+- Certifique-se de ter configurado o banco de dados SQL Server. Você pode usar o Azure SQL ou qualquer outro SQL Server.
+- Crie um banco de dados chamado `fatec`.
+- Certifique-se de que as tabelas `Personagens` e `Usuarios` já foram criadas.
+- Configure as credenciais do banco de dados no arquivo `server.js`.
+- Inicie o servidor Node.js.
 
 O projeto estará disponível em [http://localhost:3000](http://localhost:3000).
 
