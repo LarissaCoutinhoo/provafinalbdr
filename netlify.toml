@@ -1,0 +1,24 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/atualizarVida"
+  to = "https://lunavssolar.netlify.app/atualizarVida"
+  status = 200
+
+[[redirects]]
+  from = "/characters"
+  to = "https://lunavssolar.netlify.app/characters"
+  status = 200
+
+[[redirects]]
+  from = "/register"
+  to = "https://lunavssolar.netlify.app/register"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "https://lunavssolar.netlify.app/login"
+  status = 200
