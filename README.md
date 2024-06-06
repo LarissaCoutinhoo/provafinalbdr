@@ -6,7 +6,7 @@ Este é um jogo onde você pode controlar uma heroína e uma vilã, cada uma com
 
 ## Acesso Online
 
-[Link para acessar a aplicação online](https://seu-site.com)
+[Link para acessar a aplicação online](https://lunavssolar.netlify.app/)
 
 ## Tecnologias Utilizadas
 
