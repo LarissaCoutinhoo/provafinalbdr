@@ -189,17 +189,17 @@ Tela de cadastro sem êxito - usuário já cadastrado.
 ![Tela de cadastro sem êxito - usuário já cadastrado](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro2.png)
 
 ### Tela de Login
-Tela de login efetuado com sucesso.
-![Tela de login efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login1.png)
 Tela de login sem êxito - credenciais erradas.
+![Tela de login efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login1.png)
+Tela de login efetuado com sucesso.
 ![Tela de login sem êxito - credenciais erradas](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login2.png)
 
 ### Tela Principal
 Tela principal da aplicação.
-![Tela principal]([screenshots/tela_principal.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/jogo.png)
+![Tela principal](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/jogo.png)
 
 ### Dashboard
 Tela do dashboard.
-![Dashboard]([screenshots/dashboard.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/dashboard.png)
+![Dashboard](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/dashboard.png)
 
 ### Obrigada por visitar este projeto.
