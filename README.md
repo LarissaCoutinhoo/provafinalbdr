@@ -183,15 +183,15 @@ app.listen(PORT, () => {
 ## Screenshots
 
 ### Tela de Cadastro
-Tela de cadastro sem êxito - usuário já cadastrado.
-![Tela de cadastro efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro1.png)
 Tela de cadastro efetuado com sucesso.
+![Tela de cadastro efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro1.png)
+Tela de cadastro sem êxito - usuário já cadastrado.
 ![Tela de cadastro sem êxito - usuário já cadastrado](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro2.png)
 
 ### Tela de Login
-Tela de login efetuado com sucesso.
-![Tela de login efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login1.png)
 Tela de login sem êxito - credenciais erradas.
+![Tela de login efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login1.png)
+Tela de login efetuado com sucesso.
 ![Tela de login sem êxito - credenciais erradas](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login2.png)
 
 ### Tela Principal
