@@ -5,15 +5,14 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000;
 
 // Configuração do banco de dados
 const config = {
-    user: 'larissa',
-    password: '654Azurel',
-    server: 'fatecserver.database.windows.net',
-    database: 'fatec',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    server: process.env.DB_SERVER,
+    database: process.env.DB_NAME,
     options: {
         encrypt: true // Dependendo da configuração do seu servidor SQL Server
     }
@@ -32,14 +31,14 @@ app.post('/atualizarVida', async (req, res) => {
         await sql.connect(config);
         const request = new sql.Request();
         await request.query(`
-      MERGE INTO Personagens AS target
-      USING (VALUES ('heroi', ${vidaHeroi}), ('vilao', ${vidaVilao})) AS source (Nome, Vida)
-      ON target.Nome = source.Nome
-      WHEN MATCHED THEN
-        UPDATE SET Vida = source.Vida
-      WHEN NOT MATCHED THEN
-        INSERT (Nome, Vida) VALUES (source.Nome, source.Vida);
-      `);
+            MERGE INTO Personagens AS target
+            USING (VALUES ('heroi', ${vidaHeroi}), ('vilao', ${vidaVilao})) AS source (Nome, Vida)
+            ON target.Nome = source.Nome
+            WHEN MATCHED THEN
+                UPDATE SET Vida = source.Vida
+            WHEN NOT MATCHED THEN
+                INSERT (Nome, Vida) VALUES (source.Nome, source.Vida);
+        `);
         res.status(200).send('Vida do herói e do vilão atualizada com sucesso.');
     } catch (err) {
         console.error(err);
@@ -99,7 +98,7 @@ app.post('/register', async (req, res) => {
 });
 
 // Chave secreta para assinatura do JWT
-const secret = 'bb233ad0b2b004a8066b563f6a537622c39d8d13f4d90a185f2ac2bbf4060b40';
+const secret = process.env.JWT_SECRET || 'bb233ad0b2b004a8066b563f6a537622c39d8d13f4d90a185f2ac2bbf4060b40';
 
 // Rota para login de usuário
 app.post('/login', async (req, res) => {
