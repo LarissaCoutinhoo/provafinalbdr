@@ -1,10 +1,8 @@
 [build]
-  command = "npm run build"  # Comando de build, ajuste conforme necessário
-  publish = "public"         # Diretório de publicação
+  command = "npm run build"
+  publish = "public"
 
 [dev]
-  command = "npm start"      # Comando para iniciar o servidor localmente
-  port = 3000                # Porta que o servidor está escutando
+  command = "npm start"
+  port = 3000
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
