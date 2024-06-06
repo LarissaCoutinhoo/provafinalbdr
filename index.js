@@ -1,5 +1,5 @@
 const { createApp } = Vue;
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://lunavssolar.netlify.app';
 
 createApp({
     data() {
