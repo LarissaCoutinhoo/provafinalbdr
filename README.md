@@ -180,5 +180,24 @@ app.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
 });
 ```
+## Screenshots
+
+### Tela de Cadastro
+
+![Tela de cadastro efetuado com sucesso](screenshots/cadastro1.png)
+![Tela de cadastro sem êxito - usuário já cadastrado](screenshots/cadastro2.png)
+
+### Tela de Login
+
+![Tela de login efetuado com sucesso](screenshots/login1.png)
+![Tela de login sem êxito - credenciais erradas](screenshots/login2.png)
+
+### Tela Principal
+
+![Tela principal](screenshots/tela_principal.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
 
 ### Obrigada por visitar este projeto.
