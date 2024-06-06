@@ -184,20 +184,20 @@ app.listen(PORT, () => {
 
 ### Tela de Cadastro
 
-![Tela de cadastro efetuado com sucesso](screenshots/cadastro1.png)
-![Tela de cadastro sem êxito - usuário já cadastrado](screenshots/cadastro2.png)
+![Tela de cadastro efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro1.png)
+![Tela de cadastro sem êxito - usuário já cadastrado](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro2.png)
 
 ### Tela de Login
 
-![Tela de login efetuado com sucesso](screenshots/login1.png)
-![Tela de login sem êxito - credenciais erradas](screenshots/login2.png)
+![Tela de login efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login1.png)
+![Tela de login sem êxito - credenciais erradas](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/login2.png)
 
 ### Tela Principal
 
-![Tela principal](screenshots/tela_principal.png)
+![Tela principal]([screenshots/tela_principal.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/jogo.png))
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard]([screenshots/dashboard.png](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/dashboard.png))
 
 ### Obrigada por visitar este projeto.
