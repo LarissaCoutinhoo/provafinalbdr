@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js --host localhost"
+    "start": "node server.js --host localhost",
+    "build": "mkdir -p public && cp index.html dashboard.html login.html register.html style.css dashboard.css login.css index.js public"
   },
   "keywords": [],
   "author": "",

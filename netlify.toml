@@ -1,3 +1,7 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "npm run build"  # Comando de build, ajuste conforme necessário
+  publish = "public"         # Diretório de publicação
+
+[dev]
+  command = "npm start"      # Comando para iniciar o servidor localmente
+  port = 3000                # Porta que o servidor está escutando
