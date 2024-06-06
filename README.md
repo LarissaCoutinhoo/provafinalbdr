@@ -183,9 +183,9 @@ app.listen(PORT, () => {
 ## Screenshots
 
 ### Tela de Cadastro
-Tela de cadastro efetuado com sucesso.
-![Tela de cadastro efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro1.png)
 Tela de cadastro sem êxito - usuário já cadastrado.
+![Tela de cadastro efetuado com sucesso](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro1.png)
+Tela de cadastro efetuado com sucesso.
 ![Tela de cadastro sem êxito - usuário já cadastrado](https://github.com/LarissaCoutinhoo/provafinalbdr/blob/main/IMG/cadastro2.png)
 
 ### Tela de Login
