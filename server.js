@@ -1,3 +1,5 @@
+require('dotenv').config();  // Adicione esta linha no início do arquivo
+
 const express = require('express');
 const path = require('path');
 const sql = require('mssql');
@@ -154,3 +156,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
 });
+
