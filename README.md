@@ -1,50 +1,48 @@
-Jogo Herói e Vilão - LUNA VS SOLAR
-Descrição
-Este é um jogo onde você pode controlar uma heroína e uma vilã, cada uma com suas próprias ações. Você pode fazer um cadastro e posteriormente logar na aplicação. O jogo também possui um dashboard que exibe as vidas atuais dos personagens juntamente com as suas últimas ações. Todos os dados da aplicação ficam salvos em um banco de dados Azure.
+# Jogo Herói e Vilão - LUNA VS SOLAR
 
-Acesso Online
-Acesse a aplicação online
+## Descrição
 
-Tecnologias Utilizadas
-HTML
-CSS
-JavaScript (Vue.js)
-Node.js (Express, mssql, bcrypt, jsonwebtoken)
-Instalação
+Este é um jogo onde você pode controlar uma heroína e uma vilã, cada uma com suas próprias ações. Você pode fazer um cadastro e posteriormente logar na aplicação, o jogo também possui um dashboard que exibe as vidas atuais dos personagens juntamente com as suas últimas ações. Todos os dados da aplicação ficam salvos em um banco de dados Azure.
+
+## Acesso Online
+
+[Link para acessar a aplicação online](https://seu-site.com)
+
+## Tecnologias Utilizadas
+
+- HTML
+- CSS
+- JavaScript (Vue.js)
+- Node.js (Express, mssql, bcrypt, jsonwebtoken)
+
+## Instalação
+
 Para executar este projeto localmente, siga as instruções abaixo:
 
-Clone o repositório:
+1. **Clone o repositório**
 
-bash
-Copiar código
-git clone https://github.com/seu-usuario/seu-repositorio.git
-Instale as dependências:
-
+2. **Instale as dependências:**
 Certifique-se de ter o Node.js instalado. Em seguida, instale as dependências do projeto:
+'npm install'
 
-bash
-Copiar código
-npm install
-Configuração do Banco de Dados:
+3. **Configuração do Banco de Dados:**
+1. Certifique-se de ter configurado o banco de dados SQL Server. Você pode usar o Azure SQL ou qualquer outro SQL Server.
+2. Crie um banco de dados chamado `fatec`.
+3. Certifique-se de que as tabelas `Personagens` e `Usuarios` já foram criadas.
+4. Configure as credenciais do banco de dados no arquivo `server.js`.
+5. Inicie o servidor Node.js.
 
-Certifique-se de ter configurado o banco de dados SQL Server. Você pode usar o Azure SQL ou qualquer outro SQL Server.
+O projeto estará disponível em [http://localhost:3000](http://localhost:3000).
 
-Crie um banco de dados chamado fatec.
-Certifique-se de que as tabelas Personagens e Usuarios já foram criadas.
-Configure as credenciais do banco de dados no arquivo server.js.
-Inicie o servidor Node.js:
-bash
-Copiar código
-npm start
-O projeto estará disponível em http://localhost:3000.
+## Utilização
 
-Utilização
-Para acessar o jogo, abra o arquivo index.html no seu navegador.
-Para acessar o dashboard, abra o arquivo dashboard.html no seu navegador.
-Para acessar a página de login, abra o arquivo login.html no seu navegador.
-Para acessar a página de registro, abra o arquivo register.html no seu navegador.
+- Para acessar o jogo, abra o arquivo `index.html` no seu navegador.
+- Para acessar o dashboard, abra o arquivo `dashboard.html` no seu navegador.
+- Para acessar a página de login, abra o arquivo `login.html` no seu navegador.
+- Para acessar a página de registro, abra o arquivo `register.html` no seu navegador.
 
-## Código fonte Node.js
+## Código Fonte Node.js
+```javascript
 const express = require('express');
 const path = require('path');
 const sql = require('mssql');
@@ -65,7 +63,6 @@ const config = {
 };
 
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname)));
 
 app.post('/atualizarVida', async (req, res) => {
@@ -94,10 +91,13 @@ app.get('/characters', async (req, res) => {
     try {
         await sql.connect(config);
         const request = new sql.Request();
+
         const heroResult = await request.query("SELECT * FROM Personagens WHERE Nome = 'heroi'");
         const heroi = heroResult.recordset[0];
+
         const villainResult = await request.query("SELECT * FROM Personagens WHERE Nome = 'vilao'");
         const vilao = villainResult.recordset[0];
+
         res.json({ heroi, vilao });
     } catch (error) {
         console.error('Erro ao buscar dados do herói e do vilão:', error);
@@ -111,15 +111,19 @@ app.post('/register', async (req, res) => {
     try {
         await sql.connect(config);
         const request = new sql.Request();
+
         const checkUser = await request.query(`SELECT * FROM Usuarios WHERE Email = '${email}'`);
         if (checkUser.recordset.length > 0) {
             return res.status(400).send('Usuário já cadastrado.');
         }
+
         const hashedSenha = await bcrypt.hash(senha, 10);
+
         await request.query(`
             INSERT INTO Usuarios (Nome, Email, Senha)
             VALUES ('${nome}', '${email}', '${hashedSenha}')
         `);
+
         res.status(201).send('Usuário cadastrado com sucesso.');
     } catch (err) {
         console.error(err);
@@ -135,18 +139,24 @@ app.post('/login', async (req, res) => {
     try {
         await sql.connect(config);
         const request = new sql.Request();
+
         const result = await request.query(`
             SELECT * FROM Usuarios WHERE Email = '${email}'
         `);
+
         if (result.recordset.length === 0) {
             return res.status(400).send('Usuário não encontrado.');
         }
+
         const user = result.recordset[0];
+
         const isMatch = await bcrypt.compare(senha, user.Senha);
         if (!isMatch) {
             return res.status(400).send('Senha incorreta.');
         }
+
         const token = jwt.sign({ id: user.Id }, secret, { expiresIn: '1h' });
+
         res.json({ token });
     } catch (err) {
         console.error(err);
@@ -169,5 +179,6 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
 });
+```
 
 ### Obrigada por visitar este projeto.
